@@ -11,15 +11,3 @@ https://docs.google.com/document/d/15KpMlCw7Sy9YjHOpx06BBQW4FKFoxlsdCUoVJNnjoAI/
 英文：http://www.w3schools.com/js/
 
 老師個人覺得英文寫的比較好，但覺得讀英文比較吃力也可以參考中文～
-
-function isCollided(pointX, pointY, targetX, targetY, targetWidth, targetHeight) {
-    if(     pointX >= targetX
-        &&  pointX <= targetX + targetWidth
-        &&  pointY >= targetY
-        &&  pointY <= targetY + targetHeight
-    ){
-        return true;
-    } else {
-        return false;
-    }
-}
