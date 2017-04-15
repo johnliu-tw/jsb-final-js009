@@ -18,7 +18,7 @@ var enemy ={
    y:480-32
 };
 
-var cursur = {
+var cursor = {
    x:0,
    y:0
 }
