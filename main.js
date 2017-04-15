@@ -1,8 +1,8 @@
 //設定畫布環境
 var bgImg = document.createElement("img");
 var enemyImg = document.createElement("img");
-var towerbtnImg= document.creatElement("img")
-var towerImg= document.creatElement("img") 
+var towerbtnImg= document.createElement("img")
+var towerImg= document.createElement("img") 
 
 bgImg.src="images/map.png";
 enemyImg.src="images/jason.gif"
