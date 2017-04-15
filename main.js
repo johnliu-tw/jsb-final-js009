@@ -1,8 +1,11 @@
 //設定畫布環境
 var bgImg = document.createElement("img");
 var enemyImg = document.createElement("img");
+var towerbtnImg= document.creatElement("img")
+
 bgImg.src="images/map.png";
 enemyImg.src="images/jason.gif"
+towerbtnImg.src="images/tower-btn.png"
 var canvas = document.getElementById("game-canvas");
 var ctx = canvas.getContext("2d");
 
@@ -15,7 +18,7 @@ var enemy ={
 function draw(){
    ctx.drawImage(bgImg,0,0);
    ctx.drawImage(enemyImg,enemy.x,enemy.y)
-}
+   ctx.drawImage(towerbtnImg,560,432,48,48)
 
 
 
