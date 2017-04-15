@@ -2,10 +2,13 @@
 var bgImg = document.createElement("img");
 var enemyImg = document.createElement("img");
 var towerbtnImg= document.creatElement("img")
+var towerImg= document.creatElement("img") 
 
 bgImg.src="images/map.png";
 enemyImg.src="images/jason.gif"
 towerbtnImg.src="images/tower-btn.png"
+towerImg.src="images/tower.png"
+
 var canvas = document.getElementById("game-canvas");
 var ctx = canvas.getContext("2d");
 
@@ -15,11 +18,22 @@ var enemy ={
    y:480-32
 };
 
+var cursur = {
+   x:0,
+   y:0
+}
+
+$("#game-canvas").on("mousemove",function(event){
+      cursor.x = event.offsetX
+      cursor.y = event.offsetY
+})
+
 function draw(){
    ctx.drawImage(bgImg,0,0);
    ctx.drawImage(enemyImg,enemy.x,enemy.y)
    ctx.drawImage(towerbtnImg,560,432,48,48)
-
+   ctx.drawImage(towerImg,cursor.x,cursor.y)
+}
 
 
 setInterval(draw,16);
