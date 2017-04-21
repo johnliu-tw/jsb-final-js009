@@ -11,6 +11,7 @@ towerImg.src="images/tower.png"
 
 var canvas = document.getElementById("game-canvas");
 var ctx = canvas.getContext("2d");
+var isBuild = false;
 
 //設定敵人
 var enemy ={
@@ -18,6 +19,7 @@ var enemy ={
    y:480-32
 };
 
+//設定游標
 var cursor = {
    x:0,
    y:0
@@ -28,11 +30,22 @@ $("#game-canvas").on("mousemove",function(event){
       cursor.y = event.offsetY
 })
 
+$("#game-canvas").on("click",function(event){
+      if(isCollided(cursor.x,cursor.y,560,432,48,48)){
+         isBuild=true;
+      }
+      else{
+         isBuild = false;
+      }
+})
+
 function draw(){
    ctx.drawImage(bgImg,0,0);
    ctx.drawImage(enemyImg,enemy.x,enemy.y)
    ctx.drawImage(towerbtnImg,560,432,48,48)
-   ctx.drawImage(towerImg,cursor.x,cursor.y)
+   if(isBuild){
+      ctx.drawImage(towerImg,cursor.x,cursor.y)
+   }
 }
 
 
