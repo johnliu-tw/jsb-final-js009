@@ -13,21 +13,21 @@ var canvas = document.getElementById("game-canvas");
 var ctx = canvas.getContext("2d");
 var isBuild = false;
 var FPS = 60;
-
+var clock =0
 //設定敵人
-var enemy ={
-   x:96,
-   y:480-32,
-   speedX:0,
-   speedY:-64,
-   pathDes:0,
-   move:function(){
+
+function Enemy(){
+   this.x = 96;
+   this.y = 480-32;
+   this.speedX = 0;
+   this.speedY = -64;
+   this.pathDes = 0;
+   this.move = function(){
       if(isCollided(enemyPath[this.pathDes].x,enemyPath[this.pathDes].y,this.x,this.y,64/FPS,64/FPS)){
          
          this.x = enemyPath[this.pathDes].x;
          this.y = enemyPath[this.pathDes].y;      
          this.pathDes = this.pathDes + 1;
-         console.log("check");
          
          if(enemyPath[this.pathDes].x > this.x){
             this.speedX = 64;
@@ -53,7 +53,9 @@ var enemy ={
          this.y = this.y + this.speedY/FPS;   
       }
    }
-};
+}
+
+var enemies=[];
 
 var enemyPath=[
    {x:96, y:64},
@@ -87,13 +89,23 @@ $("#game-canvas").on("click",function(event){
 })
 
 function draw(){
-   enemy.move();
+   
    ctx.drawImage(bgImg,0,0);
-   ctx.drawImage(enemyImg,enemy.x,enemy.y)
+   if(clock%80==0){
+      var newEnemy = new Enemy();
+      enemies.push(newEnemy);
+   }
+   for(var i = 0; i<enemies.length;i++){
+      enemies[i].move();
+      ctx.drawImage(enemyImg,enemies[i].x,enemies[i].y)
+   }
    ctx.drawImage(towerbtnImg,560,432,48,48)
    if(isBuild){
       ctx.drawImage(towerImg,cursor.x,cursor.y)
    }
+   
+   clock = clock + 1;
+   
 
 }
 
