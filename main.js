@@ -28,20 +28,20 @@ var enemy ={
          this.pathDes = this.pathDes + 1;
          
          if(enemyPath[this.pathDes].x > this.x){
-            ____.speedX = __;
-            ____.speedY = 0;
+            this.speedX = 64;
+            this.speedY = 0;
          }
          if(enemyPath[this.pathDes].x < this.x){
-            ____.speedX = __;
-            ____.speedY = __;
+            this.speedX = -64;
+            this.speedY = 0;
          }
          if(enemyPath[this.pathDes].y > this.y){
-            ____.speedX = __;
-            ____.speedY = __;
+            this.speedX = 0;
+            this.speedY = 64;
          }
          if(enemyPath[this.pathDes].y < this.y){
-            ____.speedX = __;
-            ____.speedY = __;
+            this.speedX = 0;
+            this.speedY = -64;
          }
          
          
