@@ -27,6 +27,7 @@ var enemy ={
          this.x = enemyPath[this.pathDes].x;
          this.y = enemyPath[this.pathDes].y;      
          this.pathDes = this.pathDes + 1;
+         console.log("check");
          
          if(enemyPath[this.pathDes].x > this.x){
             this.speedX = 64;
