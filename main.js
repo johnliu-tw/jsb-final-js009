@@ -85,7 +85,7 @@ $("#game-canvas").on("click",function(event){
 })
 
 function draw(){
-   //enemy.move();
+   enemy.move();
    ctx.drawImage(bgImg,0,0);
    ctx.drawImage(enemyImg,enemy.x,enemy.y)
    ctx.drawImage(towerbtnImg,560,432,48,48)
