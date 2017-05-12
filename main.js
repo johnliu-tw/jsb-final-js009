@@ -80,12 +80,16 @@ $("#game-canvas").on("mousemove",function(event){
 })
 
 $("#game-canvas").on("click",function(event){
-      if(isCollided(cursor.x,cursor.y,560,432,48,48)){
-         isBuild=true;
-      }
-      else{
-         isBuild = false;
-      }
+        if(isCollided(cursor.x,cursor.y,560,432,48,48)){
+        	isBuild = true
+        }
+        else if(isBuild && !isCollided(cursor.x,cursor.y,560,432,48,48)){
+        	tower.x = cursor.x-cursor.x%32;
+          tower.y = cursor.y-cursor.y%32;
+        }
+        else{
+          isBuild = false
+        }
 })
 
 function draw(){
