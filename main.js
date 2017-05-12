@@ -72,7 +72,7 @@ var cursor = {
    y:0
 }
 
-
+var tower = {}
 
 $("#game-canvas").on("mousemove",function(event){
       cursor.x = event.offsetX
