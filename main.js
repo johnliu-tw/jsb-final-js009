@@ -17,6 +17,8 @@ var isBuild = false;
 var FPS = 60;
 var clock =0
 var HP = 100;
+var score =0;
+var Money =25;
 ctx.fillStyle="white"
 ctx.font = "24px Arial"
 //設定敵人
@@ -26,10 +28,8 @@ function Enemy(){
    this.y = 480-32;
    this.speedX = 0;
    this.speedY = -64;
-   this.pathDes = 0;
-   
-   this.hp = 10;
-   
+   this.pathDes = 0;  
+   this.hp = 10;   
    this.move = function(){
       if(isCollided(enemyPath[this.pathDes].x,enemyPath[this.pathDes].y,this.x,this.y,64/FPS,64/FPS)){
          
@@ -57,9 +57,7 @@ function Enemy(){
          if(enemyPath[this.pathDes].y < this.y){
             this.speedX = 0;
             this.speedY = -64;
-         }
-         
-         
+         }         
       }
       else{
          this.x = this.x + this.speedX/FPS;
@@ -85,8 +83,8 @@ var cursor = {
    y:0
 }
 
-var tower = {
-   range:96,
+function Tower() {
+   this.range = 96;
    aimingEnemyId:null,
    searchEnemy: function(){
       
@@ -102,10 +100,7 @@ var tower = {
             if(this.readyToShootTime <= 0){
              this.shoot(i);
              this.readyToShootTime = this.fireRate
-            }
-            
-            
-            
+            }            
             return;
          }
       }
@@ -137,7 +132,7 @@ $("#game-canvas").on("click",function(event){
         }
         else if(isBuild && !isCollided(cursor.x,cursor.y,560,432,48,48)){
         	tower.x = cursor.x-cursor.x%32;
-          tower.y = cursor.y-cursor.y%32;
+         tower.y = cursor.y-cursor.y%32;
         }
         else{
           isBuild = false
@@ -154,7 +149,9 @@ function draw(){
    for(var i = 0; i<enemies.length;i++){
       
       if(enemies[i].hp<1){
-         enemies.splice(i,1);
+         enemies.splice(i,1);         
+         money = money + 25
+         score = score + 8
       }
       else{
       enemies[i].move();
@@ -165,8 +162,7 @@ function draw(){
    if(isBuild){
       ctx.drawImage(towerImg,cursor.x,cursor.y)
    }
-   ctx.drawImage(towerImg,tower.x,tower.y)
-   
+   ctx.drawImage(towerImg,tower.x,tower.y)  
    tower.searchEnemy();
    if(tower.aimingEnemyId!=null){
       var id = tower.aimingEnemyId;
@@ -174,7 +170,8 @@ function draw(){
    }
    
    ctx.fillText("HP: "+HP,20,20)
-   
+   ctx.fillText("Score: "+score,20,40) 
+   ctx.fillText("Money: "+money,20,60)   
    clock = clock + 1;
    
 
