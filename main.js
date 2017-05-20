@@ -143,10 +143,10 @@ function draw(){
    }
    ctx.drawImage(towerImg,tower.x,tower.y)
    
-   tower._____();
-   if(tower._____!=null){
-      var id = tower.______;
-      ctx.drawImage(crosshairImage, enemies[__].x,enemies[__].y)
+   tower.search()();
+   if(tower.aimingEnemyId!=null){
+      var id = tower.aimingEnemyId;
+      ctx.drawImage(crosshairImage, enemies[id].x,enemies[id].y)
    }
    
    ctx.fillText("HP: "+HP,20,20)
