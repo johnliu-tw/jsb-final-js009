@@ -143,7 +143,7 @@ function draw(){
    }
    ctx.drawImage(towerImg,tower.x,tower.y)
    
-   tower.search()();
+   tower.search();
    if(tower.aimingEnemyId!=null){
       var id = tower.aimingEnemyId;
       ctx.drawImage(crosshairImage, enemies[id].x,enemies[id].y)
