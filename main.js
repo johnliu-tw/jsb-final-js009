@@ -18,7 +18,7 @@ var FPS = 60;
 var clock =0
 var HP = 100;
 var score =0;
-var Money =25;
+var money =25;
 ctx.fillStyle="white"
 ctx.font = "24px Arial"
 //設定敵人
