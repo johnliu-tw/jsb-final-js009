@@ -83,8 +83,8 @@ var cursor = {
    y:0
 }
 
-function Tower() {
-   this.range = 96;
+var tower = {
+   range: 96,
    aimingEnemyId:null,
    searchEnemy: function(){
       
